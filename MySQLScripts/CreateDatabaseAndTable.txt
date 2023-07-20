@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS `programming_quiz`;
+USE `programming_quiz`;
+
+DROP TABLE IF EXISTS `question_bank`;
+
+CREATE TABLE `question_bank` (
+	`id` int NOT NULL AUTO_INCREMENT,
+    `category` varchar(45) default null,
+    `difficulty_level` varchar(45) default null,
+    `question` varchar(250) Default NULL,
+    `correct_answer` varchar(50) Default NULL,
+    `option_1` varchar(50) Default NULL,
+    `option_2` varchar(50) Default NULL,
+    `option_3` varchar(50) Default NULL,
+    `option_4` varchar(50) Default NULL,
+    primary key (`id`)
+) ENGINE=InnoDB auto_increment=1 DEFAULT CHARSET=latin1;
