@@ -1,0 +1,17 @@
+INSERT INTO `question_bank` VALUES
+	(1,"Java","EASY","Which of the following option leads to the portability and security of Java?","Bytecode is executed by JVM","Bytecode is executed by JVM","The applet makes the Java code secure and portable","Use of exception handling","Dynamic binding between objects"),
+	(2,"Java","EASY","Which of the following is not a Java features?","Use of pointers","Dynamic","Architecture Neutral","Use of pointers","Object-oriented"),
+	(3,"Java","EASY","The \u0021 article referred to as a","Unicode escape sequence","Unicode escape sequence","Octal escape","Hexadecimal","Line feed"),
+	(4,"Java","EASY","_____ is used to find and fix bugs in the Java programs.","JDB","JVM","JRE","JDK","JDB"),
+	(5,"Java","EASY","Which of the following is a valid declaration of a char?","char ch = '\utea';","char ch = '\utea';","char ca = 'tea';","char cr = \u0223;","char cc = '\itea';"),
+	(6,"Java","MEDIUM","What is the return type of the hashCode() method in the Object class?","int","Object","int","long","void"),
+	(7,"Java","MEDIUM","Which of the following is a valid long literal?","0xnf029L","ABH8097","L990023","904423","0xnf029L"),
+	(8,"Java","MEDIUM","What does the expression float a = 35 / 0 return?","Infinity","Zero","Not a Number","Infinity","Run Time Exception"),
+	(9,"Java","MEDIUM","Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?","Javadoc tool","javap tool","javaw command","Javadoc tool","javah command"),
+	(10,"Java","MEDIUM","Which method of the Class.class is used to determine the name of a class represented by the class object as a String?","getName()","getClass()","intern()","getName()","toString()"),
+	(11,"Python","EASY","Which of the following is used to define a block of code in Python language?","Indentation","Indentation","Key","Brackets","All"),
+	(12,"Python","EASY","What does pip stand for python?","Preferred Installer Program","Pip Installs Python","Pip Installs Packages","Preferred Installer Program","None of the Above"),
+	(13,"Python","EASY","Which one of the following is not a keyword in Python language?","eval","pass","eval","assert","nonlocal"),
+	(14,"Python","EASY","Which of the following statements is used to create an empty set in Python?","set()","()","[]","{}","set()"),
+	(15,"Python","MEDIUM","What is the maximum possible length of an identifier in Python?","None of the mentioned above","79 characters","31 characters","63 characters","None of the mentioned above"),
+	(16,"Python","MEDIUM","What is output of print(math.pow(3, 2))?","9.0","9,0","None","9","3");
