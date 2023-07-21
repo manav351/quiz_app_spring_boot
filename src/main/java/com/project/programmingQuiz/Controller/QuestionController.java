@@ -5,6 +5,10 @@ import com.project.programmingQuiz.Entity.Question;
 import com.project.programmingQuiz.Entity.ResponseStatus;
 import com.project.programmingQuiz.ExceptionHandler.NegativeQuestionId;
 import com.project.programmingQuiz.Service.QuestionServiceImplementation;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,38 +24,38 @@ public class QuestionController {
     }
 
     @GetMapping("/all")
-    public List<Question> getAllQuestions(){
-        return questionService.getAllQuestions();
+    public ResponseEntity<List<Question>> getAllQuestions(){
+        return new ResponseEntity<>(questionService.getAllQuestions(), HttpStatus.OK);
     }
 
-    @GetMapping("/allQuestions/{selectedCategory}")
-    public List<Question> getQuestionsByCategory(@PathVariable String selectedCategory){
-        return questionService.getQuestionsByCategory(selectedCategory);
+    @GetMapping("/all/{selectedCategory}")
+    public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String selectedCategory){
+        return new ResponseEntity<>(questionService.getQuestionsByCategory(selectedCategory), HttpStatus.OK);
     }
 
     @GetMapping("/{questionId}")
-    public GenericResponse getQuestionById(@PathVariable int questionId){
-        return questionService.getQuestionById(questionId);
+    public ResponseEntity<GenericResponse> getQuestionById(@PathVariable int questionId){
+        return new ResponseEntity<>(questionService.getQuestionById(questionId), HttpStatus.OK);
     }
 
     @PostMapping("")
-    public GenericResponse addQuestionToTable(@RequestBody Question requestedQuestion){
+    public ResponseEntity<GenericResponse> addQuestionToTable(@RequestBody Question requestedQuestion){
         if(requestedQuestion.getId() < 0)
             throw new NegativeQuestionId("");
 
-        return questionService.addQuestion(requestedQuestion);
+        return new ResponseEntity<>(questionService.addQuestion(requestedQuestion), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{questionId}")
-    public GenericResponse deleteQuestionFromDB(@PathVariable int questionId){
-        return questionService.deleteQuestion(questionId);
+    public ResponseEntity<GenericResponse> deleteQuestionFromDB(@PathVariable int questionId){
+        return new ResponseEntity<>(questionService.deleteQuestion(questionId), HttpStatus.OK);
     }
 
     @PutMapping("")
-    public GenericResponse updateQuestion(@RequestBody Question requestedQuestion){
+    public ResponseEntity<GenericResponse> updateQuestion(@RequestBody Question requestedQuestion){
         if(requestedQuestion.getId() < 0)
             throw new NegativeQuestionId("");
 
-        return questionService.updateQuestion(requestedQuestion);
+        return new ResponseEntity<>(questionService.updateQuestion(requestedQuestion), HttpStatus.OK) ;
     }
 }
