@@ -37,4 +37,24 @@ public class QuestionDAOImplementation implements QuestionDAO{
         return selectedQuestions;
     }
 
+    @Override
+    public Question findById(int questionId) {
+        return entityManager.find(Question.class, questionId);
+    }
+
+    @Override
+    public void deleteByQuestion(Question questionObject) {
+        entityManager.remove(questionObject);
+    }
+
+    @Override
+    public Question updateByQuestion(Question requestedQuestion) {
+        return entityManager.merge(requestedQuestion);
+    }
+
+    @Override
+    public Question save(Question requestedQuestion) {
+        return entityManager.merge(requestedQuestion);
+    }
+
 }
