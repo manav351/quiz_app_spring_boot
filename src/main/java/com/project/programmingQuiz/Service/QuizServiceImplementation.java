@@ -4,6 +4,7 @@ import com.project.programmingQuiz.DAO.QuestionDAO;
 import com.project.programmingQuiz.DAO.QuestionDAOImplementation;
 import com.project.programmingQuiz.DAO.QuizDAO;
 import com.project.programmingQuiz.Entity.*;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -64,5 +65,39 @@ public class QuizServiceImplementation implements QuizService{
         }
 
         return new ResponseEntity<>(questionForUser, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<UserResponse> userResponses) {
+        int result = 0;
+        Question questionFromDB;
+
+        for(UserResponse response: userResponses){
+            questionFromDB = questionDAO.findById(response.getId());
+
+            if(response.getResponse().equals(questionFromDB.getCorrectAnswer()))
+                result++;
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<UserResponse>> findCorrectAnswers(Integer id, List<UserResponse> userResponses) {
+        int result = 0;
+        List<UserResponse> resultResponse = new ArrayList<>();
+        Question questionFromDB;
+        UserResponse adhocUserResponse;
+
+
+        for(UserResponse response: userResponses){
+            questionFromDB = questionDAO.findById(response.getId());
+            adhocUserResponse = new UserResponse(response.getId(), questionFromDB.getCorrectAnswer());
+
+            if(response.getResponse().equals(questionFromDB.getCorrectAnswer()))
+                result++;
+
+            resultResponse.add(adhocUserResponse);
+        }
+
+        return new ResponseEntity<>(resultResponse, HttpStatus.OK);
     }
 }
