@@ -53,6 +53,17 @@ public class QuestionDAOImplementation implements QuestionDAO{
     }
 
     @Override
+    public List<Question> findRandomQuestionsByCategory(String category, int noOfQuestions) {
+        TypedQuery<Question> randomQuestionsQuery = entityManager.createQuery("FROM Question WHERE category=:theCategory ORDER BY rand()", Question.class);
+
+        randomQuestionsQuery.setMaxResults(noOfQuestions);
+        randomQuestionsQuery.setParameter("theCategory", category);
+
+        List<Question> questions = randomQuestionsQuery.getResultList();
+        return questions;
+    }
+
+    @Override
     public Question save(Question requestedQuestion) {
         return entityManager.merge(requestedQuestion);
     }

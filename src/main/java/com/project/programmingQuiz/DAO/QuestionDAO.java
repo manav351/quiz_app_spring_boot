@@ -17,4 +17,6 @@ public interface QuestionDAO{
     void deleteByQuestion(Question questionObject);
 
     Question updateByQuestion(Question requestedQuestion);
+
+    List<Question> findRandomQuestionsByCategory(String category, int noOfQuestions);
 }
